@@ -1,5 +1,7 @@
 package com.lrs.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +17,13 @@ public class LoginController {
 	@Autowired
 	private LoginService serivce;
 	
-	@RequestMapping(value="/check/{code}" ,method=RequestMethod.GET)
-	public String check(@PathVariable String code){
-		
+	@RequestMapping(value="/checkLogin/{loginKey}" ,method=RequestMethod.GET)
+	public boolean checkLogin(@PathVariable String loginKey){
+		return serivce.checkLogin(loginKey);
+	}
 	
-		return result;
+	@RequestMapping(value="/login/{code}" ,method=RequestMethod.GET)
+	public Map<String,Object> login(@PathVariable String code){
+		return serivce.login(code);
 	}
 }

@@ -1,5 +1,7 @@
 package com.lrs.service;
 
+import java.util.Map;
+
 public interface LoginService {
 	
 	/**
@@ -11,12 +13,12 @@ public interface LoginService {
 	 * @param code
 	 * @return
 	 */
-	String login(String code);
+	Map<String,Object> login(String code);
 	
 	/**
 	 * Í¨¹ýµÇÂ¼ÁîÅÆÑéÖ¤µÇÂ¼×´Ì¬
 	 * @param loginKey
 	 * @return
 	 */
-	boolean check(String loginKey);
+	boolean checkLogin(String loginKey);
 }

@@ -1,5 +1,9 @@
 package com.lrs.business;
 
+import java.util.Map;
+
+import com.lrs.bean.dto.UserDto;
+
 public interface LoginBusiness {
 
 	/**
@@ -11,12 +15,15 @@ public interface LoginBusiness {
 	 * @param code
 	 * @return
 	 */
-	String login(String code);
+	Map<String,Object> login(String code);
 	
 	/**
 	 * Í¨¹ýµÇÂ¼ÁîÅÆÑéÖ¤µÇÂ¼×´Ì¬
 	 * @param loginKey
 	 * @return
 	 */
-	boolean check(String loginKey);
+	boolean checkLogin(String loginKey);
+	
+	boolean register(UserDto user);
+	
 }

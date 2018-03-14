@@ -1,11 +1,12 @@
 package com.lrs.service.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.lrs.bean.po.Test;
 import com.lrs.business.LoginBusiness;
 import com.lrs.service.LoginService;
 
@@ -17,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
 	private LoginBusiness loginBusiness;
 
 	@Override
-	public String login(String code) {
+	public Map<String,Object> login(String code) {
 		if(StringUtils.isEmpty(code)) {
 			return null;
 		}
@@ -25,11 +26,11 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public boolean check(String loginKey) {
+	public boolean checkLogin(String loginKey) {
 		if(StringUtils.isEmpty(loginKey)) {
 			return false;
 		}
-		return loginBusiness.check(loginKey);
+		return loginBusiness.checkLogin(loginKey);
 	}
 	
 
