@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 指定spring注解注入层 -->
+	<context:component-scan base-package="com.lrs" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:properties/*.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 数据库配置 -->
+	<import resource="classpath*:config/mybatis/*.xml" /> 
+	
+	<!-- redis配置 -->
+	<import resource="classpath*:config/redis/*.xml" /> 
+	
+	<!-- 配置RestTemplate -->
+    <!--Http client Factory -->
+    <bean id="httpClientFactory"
+        class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+        <property name="connectTimeout" value="10000" />
+        <property name="readTimeout" value="10000" />
+    </bean>
+
+    <!--RestTemplate -->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory" />
+    </bean>
+</beans>
