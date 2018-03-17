@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.lrs.bean.dto.UserDto;
 import com.lrs.business.LoginBusiness;
 import com.lrs.service.LoginService;
 
@@ -31,6 +32,14 @@ public class LoginServiceImpl implements LoginService {
 			return false;
 		}
 		return loginBusiness.checkLogin(loginKey);
+	}
+
+	@Override
+	public boolean register(String loginKey, UserDto user) {
+		if(user==null) {
+			return false;
+		}
+		return loginBusiness.register(loginKey, user);
 	}
 	
 

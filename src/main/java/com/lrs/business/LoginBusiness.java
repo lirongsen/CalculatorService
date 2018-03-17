@@ -24,6 +24,11 @@ public interface LoginBusiness {
 	 */
 	boolean checkLogin(String loginKey);
 	
-	boolean register(UserDto user);
+	/**
+	 * зЂВс
+	 * @param user
+	 * @return
+	 */
+	boolean register(String loginKey, UserDto user);
 	
 }

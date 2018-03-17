@@ -2,6 +2,8 @@ package com.lrs.service;
 
 import java.util.Map;
 
+import com.lrs.bean.dto.UserDto;
+
 public interface LoginService {
 	
 	/**
@@ -21,4 +23,11 @@ public interface LoginService {
 	 * @return
 	 */
 	boolean checkLogin(String loginKey);
+	
+	/**
+	 * зЂВс
+	 * @param user
+	 * @return
+	 */
+	boolean register(String loginKey, UserDto user);
 }
